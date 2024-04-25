@@ -1,5 +1,10 @@
 import type { QuestionCollection } from 'inquirer'
+import ora from 'ora'
 import pkg from '../package.json'
+
+export const spinner = ora({
+  color: 'yellow',
+})
 
 export const usage = [
   'clt <command>',
@@ -7,6 +12,7 @@ export const usage = [
   '',
   'clt create                      create new project',
   'clt create --force              overlay existing projects',
+  'clt antdv                       install antdv into the vue-vite-ts project',
 ].join('\n')
 
 export const CREATE_QUESTIONS: Array<QuestionCollection> = [

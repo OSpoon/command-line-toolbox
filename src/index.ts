@@ -3,6 +3,7 @@ import { log } from 'node:console'
 import minimist from 'minimist'
 import { usage } from './constants'
 import create from './commands/create'
+import antdv from './commands/antdv'
 
 async function startup() {
   const argv = minimist(process.argv.slice(2))
@@ -13,6 +14,8 @@ async function startup() {
   }
   if (argv._[0] === 'create')
     await create(argv)
+  if (argv._[0] === 'antdv')
+    await antdv()
 }
 
 startup()

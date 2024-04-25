@@ -1,11 +1,6 @@
 import inquirer from 'inquirer'
-import ora from 'ora'
 import shell from 'shelljs'
-import { CREATE_QUESTIONS } from '../constants'
-
-const spinner = ora({
-  color: 'yellow',
-})
+import { CREATE_QUESTIONS, spinner } from '../constants'
 
 export default async (argv: any) => {
   const { template, name, description } = await inquirer.prompt(CREATE_QUESTIONS)

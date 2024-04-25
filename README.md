@@ -11,7 +11,7 @@
 ## Features
 
 * create: 创建新项目,支持模板(`ospoon/pkg-template-ts`);
-* Feature2
+* antdv: 安装 `ant-design-vue@4.x` 到 `vue-vite-ts` 项目;
 * Feature3
 
 ## License

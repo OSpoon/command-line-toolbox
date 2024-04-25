@@ -55,7 +55,8 @@
     "minimist": "^1.2.8",
     "ora": "^8.0.1",
     "picocolors": "^1.0.0",
-    "shelljs": "^0.8.5"
+    "shelljs": "^0.8.5",
+    "ts-morph": "^22.0.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.14.0",
