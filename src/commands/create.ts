@@ -12,8 +12,9 @@ export default async (argv: any) => {
   const commands = [
         `npx degit ${template} ${name} --force ${argv.force || false}`,
         `cd ${name}`,
-        `npx ejs ./README.md name=${name} description=${description} -o ./README.md`,
-        `npx ejs ./package.json name=${name} description=${description} -o ./package.json`,
+        `npx ejs ./_README.md name=${name} description=${description} -o ./README.md`,
+        `npx ejs ./_package.json name=${name} description=${description} -o ./package.json`,
+        `npx rimraf _README.md _package.json`,
   ]
   spinner.start('init project template ...')
   shell.exec(commands.join(' && '), {
