@@ -10,7 +10,7 @@
 
 ## Features
 
-* Feature1
+* create: 创建新项目,支持模板(`ospoon/pkg-template-ts`);
 * Feature2
 * Feature3
 
