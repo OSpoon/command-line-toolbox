@@ -4,7 +4,9 @@ import pkg from '../package.json'
 export const usage = [
   'clt <command>',
   'Usage:',
-  'create [--force]              create new project',
+  '',
+  'clt create                      create new project',
+  'clt create --force              overlay existing projects',
 ].join('\n')
 
 export const CREATE_QUESTIONS: Array<QuestionCollection> = [
