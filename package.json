@@ -1,7 +1,7 @@
 {
   "name": "command-line-toolbox",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "packageManager": "pnpm@9.0.2",
   "description": "命令行工具箱",
   "author": "OSpoon <zxin088@gmail.com>",
