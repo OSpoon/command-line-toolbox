@@ -4,6 +4,7 @@ import minimist from 'minimist'
 import { usage } from './constants'
 import create from './commands/create'
 import antdv from './commands/antdv'
+import vite from './commands/vite'
 
 async function startup() {
   const argv = minimist(process.argv.slice(2))
@@ -16,6 +17,8 @@ async function startup() {
     await create(argv)
   if (argv._[0] === 'antdv')
     await antdv()
+  if (argv._[0] === 'vite')
+    await vite()
 }
 
 startup()
