@@ -23,8 +23,8 @@ export const CREATE_QUESTIONS: Array<QuestionCollection> = [
     message: 'project template',
     choices: [
       {
-        name: 'ospoon/pkg-template-ts',
-        value: 'ospoon/pkg-template-ts',
+        name: 'ospoon/starter-ts',
+        value: 'ospoon/starter-ts',
       },
     ],
   },
