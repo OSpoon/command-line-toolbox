@@ -5,10 +5,11 @@ import { usage } from './constants'
 import create from './commands/create'
 import antdv from './commands/antdv'
 import vite from './commands/vite'
+import tree from './commands/tree'
 
 async function startup() {
   const argv = minimist(process.argv.slice(2))
-  log(argv)
+  log('args: ', argv)
   if (argv._.length === 0) {
     log(usage)
     process.exit(0)
@@ -19,6 +20,8 @@ async function startup() {
     await antdv()
   if (argv._[0] === 'vite')
     await vite()
+  if (argv._[0] === 'tree')
+    tree(argv.ignore || [])
 }
 
 startup()

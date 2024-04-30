@@ -14,6 +14,8 @@ export const usage = [
   'clt create --force              overlay existing projects',
   'clt antdv                       install antdv into the vue-vite-ts project',
   'clt vite                        run npm create vite@latest',
+  'clt tree                        print current directory',
+  'clt tree --ignore <pattern>     ignore unimportant directories',
 ].join('\n')
 
 export const CREATE_QUESTIONS: Array<QuestionCollection> = [

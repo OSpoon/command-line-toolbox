@@ -13,7 +13,7 @@
 * create: 创建新项目,支持模板(`ospoon/starter-ts`);
 * antdv: 安装 `ant-design-vue@4.x` 到 `vue-vite-ts` 项目;
 * vite: 桥接 `vite` ,创建 `vite` 内置模板项目;
-* Feature3
+* tree: 打印目录树,默认忽略`.git`, `.github`, `.vscode`, `node_modules` 和 `dist`;
 
 ## License
 
