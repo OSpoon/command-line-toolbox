@@ -12,10 +12,11 @@ export const usage = [
   '',
   'clt create                      create new project',
   'clt create --force              overlay existing projects',
-  'clt antdv                       install antdv into the vue-vite-ts project',
-  'clt vite                        run npm create vite@latest',
   'clt tree                        print current directory',
   'clt tree --ignore <pattern>     ignore unimportant directories',
+  'clt antdv                       install antdv into the vue-vite-ts project',
+  'clt vite                        run npm create vite@latest',
+  'clt rm --dir <pathname>         delete a folder or file',
 ].join('\n')
 
 export const CREATE_QUESTIONS: Array<QuestionCollection> = [

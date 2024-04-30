@@ -14,6 +14,7 @@
 * antdv: 安装 `ant-design-vue@4.x` 到 `vue-vite-ts` 项目;
 * vite: 桥接 `vite` ,创建 `vite` 内置模板项目;
 * tree: 打印目录树,默认忽略`.git`, `.github`, `.vscode`, `node_modules` 和 `dist`;
+* rm: 借助 `rimraf` 删除文件或文件夹;
 
 ## License
 
