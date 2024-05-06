@@ -17,6 +17,7 @@ export const usage = [
   'clt antdv                       install antdv into the vue-vite-ts project',
   'clt vite                        run npm create vite@latest',
   'clt rm --dir <pathname>         delete a folder or file',
+  'clt image --file <pathname>     image `--quality` compression, default 80',
 ].join('\n')
 
 export const CREATE_QUESTIONS: Array<QuestionCollection> = [

@@ -7,6 +7,7 @@ import antdv from './commands/antdv'
 import vite from './commands/vite'
 import tree from './commands/tree'
 import rm from './commands/rm'
+import image from './commands/image'
 
 async function startup() {
   const argv = minimist(process.argv.slice(2))
@@ -25,6 +26,8 @@ async function startup() {
     tree(argv.ignore || [])
   if (argv._[0] === 'rm')
     rm(argv.dir)
+  if (argv._[0] === 'image')
+    await image(argv)
 }
 
 startup()
