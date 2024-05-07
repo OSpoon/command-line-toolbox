@@ -10,14 +10,16 @@ export const usage = [
   'clt <command>',
   'Usage:',
   '',
-  'clt create                      create new project',
-  'clt create --force              overlay existing projects',
-  'clt tree                        print current directory',
-  'clt tree --ignore <pattern>     ignore unimportant directories',
-  'clt antdv                       install antdv into the vue-vite-ts project',
-  'clt vite                        run npm create vite@latest',
-  'clt rm --dir <pathname>         delete a folder or file',
-  'clt image --file <pathname>     image `--quality` compression, default 80',
+  'clt create                         create new project',
+  'clt create --force                 overlay existing projects',
+  'clt tree                           print current directory',
+  'clt tree --ignore <pattern>        ignore unimportant directories',
+  'clt antdv                          install antdv into the vue-vite-ts project',
+  'clt vite                           run npm create vite@latest',
+  'clt rm --dir <pathname>            delete a folder or file',
+  'clt image --file <pathname>        image `--quality` compression, default 80',
+  'clt gitignore                      generate .gitignore file',
+  'clt gitignore --template <name>    generate specific .gitignore file',
 ].join('\n')
 
 export const CREATE_QUESTIONS: Array<QuestionCollection> = [
@@ -148,3 +150,19 @@ export const VITE_QUESTIONS: Array<QuestionCollection> = [
     ],
   },
 ]
+
+export function GITIGNORE_QUESTIONS(templates: string[]): Array<QuestionCollection> {
+  return [
+    {
+      type: 'list',
+      name: 'template',
+      message: '.gitignore template',
+      choices: templates.map((template) => {
+        return {
+          name: template,
+          value: template,
+        }
+      }),
+    },
+  ]
+}
