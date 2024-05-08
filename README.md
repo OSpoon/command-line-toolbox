@@ -1,4 +1,6 @@
-# command-line-toolbox
+<h1 align="center">command-line-toolbox</h1>
+
+<p align="center">🛠 收集开发中可能会高频使用的工具</p
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
@@ -6,7 +8,12 @@
 [![JSDocs][jsdocs-src]][jsdocs-href]
 [![License][license-src]][license-href]
 
-命令行工具箱
+## Install
+
+```bash
+# 全局安装
+npm install command-line-toolbox -g
+```
 
 ## Features
 
