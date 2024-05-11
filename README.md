@@ -24,6 +24,7 @@ npm install command-line-toolbox -g
 * rm: 借助 `rimraf` 删除文件或文件夹;
 * image: 借助 `sharp` 实现图片质量压缩, 支持格式`jpeg`, `jp2`, `jxl`, `webp`, `avif`, `heif`, `tiff`, `png`;
 * gitignore: 为项目生成`.gitignore`文件;
+* mkcert: 借助 `mkcert` 生成开发环境使用的 CA 证书;
 
 PS: 因 `sharp` 限制, **NodeJS** 版本需满足 "^18.17.0 || ^20.3.0 || >=21.0.0";
 

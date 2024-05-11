@@ -20,6 +20,8 @@ export const usage = [
   'clt image --file <pathname>        image `--quality` compression, default 80',
   'clt gitignore                      generate .gitignore file',
   'clt gitignore --template <name>    generate specific .gitignore file',
+  'clt mkcert --host <hostname>       generate the specified certificate',
+  'clt mkcert --uninstall             uninstall the local CA (but do not delete it)',
 ].join('\n')
 
 export const CREATE_QUESTIONS: Array<QuestionCollection> = [
