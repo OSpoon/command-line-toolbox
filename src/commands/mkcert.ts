@@ -77,19 +77,10 @@ async function getMkcertSourceFile(remoteUrl: string, filePath: string) {
   }
 }
 
-function uninstall(cmd: string) {
-  shell.exec(`${cmd} -uninstall`, {
-    fatal: true,
-    silent: true,
-  }, (_code: number, _stdout: string, stderr: string) => {
-    log(stderr)
-  })
-}
-
-function generate(cmd: string, hosts: string[]) {
+function generate(cmd: string, domains: string[]) {
   const commands = [
     `${cmd} -install`,
-    `${cmd} ${hosts.join(' ')}`,
+    `${cmd} ${domains.join(' ')}`,
   ]
   shell.exec(commands.join(' && '), {
     fatal: true,
@@ -99,18 +90,24 @@ function generate(cmd: string, hosts: string[]) {
   })
 }
 
-export default async (argv: any) => {
+export default async (domains: string[]) => {
   const { url: remoteUrl, filename } = await getSourceInfo()
-  const filePath = join(homedir(), `.mkcert`, filename)
-  if (!existsSync(filePath)) {
-    await getMkcertSourceFile(remoteUrl, filePath)
-  }
-  else {
-    if (argv.uninstall)
-      uninstall(filePath)
-    if (argv.host) {
-      const hosts = typeof argv.host === 'string' ? [argv.host] : argv.host
-      generate(filePath, hosts)
-    }
+  const cmd = join(homedir(), `.mkcert`, filename)
+  if (!existsSync(cmd))
+    await getMkcertSourceFile(remoteUrl, cmd)
+  else
+    generate(cmd, domains)
+}
+
+export async function uninstall() {
+  const { filename } = await getSourceInfo()
+  const cmd = join(homedir(), `.mkcert`, filename)
+  if (existsSync(cmd)) {
+    shell.exec(`${cmd} -uninstall`, {
+      fatal: true,
+      silent: true,
+    }, (_code: number, _stdout: string, stderr: string) => {
+      log(stderr)
+    })
   }
 }

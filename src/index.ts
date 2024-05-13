@@ -9,7 +9,7 @@ import tree from './commands/tree'
 import rm from './commands/rm'
 import image from './commands/image'
 import gitignore from './commands/gitignore'
-import mkcert from './commands/mkcert'
+import mkcert, { uninstall } from './commands/mkcert'
 
 async function startup() {
   const argv = minimist(process.argv.slice(2))
@@ -32,8 +32,10 @@ async function startup() {
     await image(argv)
   if (argv._[0] === 'gitignore')
     await gitignore(argv)
-  if (argv._[0] === 'mkcert')
-    await mkcert(argv)
+  if (argv._[0] === 'mkcert' && !argv.uninstall)
+    await mkcert(argv._.slice(1))
+  if (argv._[0] === 'mkcert' && argv.uninstall)
+    await uninstall()
 }
 
 startup()
