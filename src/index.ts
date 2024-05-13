@@ -4,10 +4,8 @@ import minimist from 'minimist'
 import { usage } from './constants'
 import create from './commands/create'
 import antdv from './commands/antdv'
-import vite from './commands/vite'
 import tree from './commands/tree'
 import rm from './commands/rm'
-import image from './commands/image'
 import gitignore from './commands/gitignore'
 import mkcert, { uninstall } from './commands/mkcert'
 
@@ -22,14 +20,10 @@ async function startup() {
     await create(argv)
   if (argv._[0] === 'antdv')
     await antdv()
-  if (argv._[0] === 'vite')
-    await vite()
   if (argv._[0] === 'tree')
     tree(argv.ignore || [])
   if (argv._[0] === 'rm')
     rm(argv._.slice(1))
-  if (argv._[0] === 'image')
-    await image(argv)
   if (argv._[0] === 'gitignore')
     await gitignore(argv._[1], argv.list)
   if (argv._[0] === 'mkcert' && !argv.uninstall)

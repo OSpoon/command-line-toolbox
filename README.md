@@ -17,16 +17,14 @@ npm install command-line-toolbox -g
 
 ## Features
 
-* create: 创建新项目,支持模板(`ospoon/starter-ts`);
-* antdv: 安装 `ant-design-vue@4.x` 到 `vue-vite-ts` 项目;
-* vite: 桥接 `vite` ,创建 `vite` 内置模板项目;
-* tree: 打印目录树,默认忽略`.git`, `.github`, `.vscode`, `node_modules` 和 `dist`;
-* rm: 借助 `rimraf` 删除文件或文件夹;
-* image: 借助 `sharp` 实现图片质量压缩, 支持格式`jpeg`, `jp2`, `jxl`, `webp`, `avif`, `heif`, `tiff`, `png`;
-* gitignore: 为项目生成`.gitignore`文件;
-* mkcert: 借助 `mkcert` 生成开发环境使用的 CA 证书;
-
-PS: 因 `sharp` 限制, **NodeJS** 版本需满足 "^18.17.0 || ^20.3.0 || >=21.0.0";
+| command | description | dependencies |
+|-------|-------|-------|
+| `clt create` | 创建新项目 | **ospoon/starter-ts** |
+| `clt tree` | 打印目录树 |  |
+| `clt antdv` | 安装 `ant-design-vue@4.x` 到 `vue-vite-ts` 项目 | **ant-design-vue** |
+| `clt rm` | 递归地删除“path”下的所有文件和文件夹 | **rimraf** |
+| `clt gitignore` | 生成`.gitignore`文件 |  |
+| `clt mkcert` | 生成本地可信任的开发证书 | **mkcert** |
 
 ## License
 

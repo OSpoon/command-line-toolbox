@@ -57,13 +57,11 @@
   "dependencies": {
     "@octokit/core": "^6.1.2",
     "axios": "^1.6.8",
-    "image-type": "^5.2.0",
     "inquirer": "^9.2.19",
     "minimatch": "^9.0.4",
     "minimist": "^1.2.8",
     "ora": "^8.0.1",
     "picocolors": "^1.0.0",
-    "sharp": "^0.33.3",
     "shelljs": "^0.8.5",
     "ts-morph": "^22.0.0"
   },
@@ -75,7 +73,6 @@
     "@types/minimatch": "^5.1.2",
     "@types/minimist": "^1.2.5",
     "@types/node": "^20.12.7",
-    "@types/sharp": "^0.32.0",
     "@types/shelljs": "^0.8.15",
     "bumpp": "^9.4.0",
     "eslint": "^9.0.0",
