@@ -1,9 +1,9 @@
 import shell from 'shelljs'
 import { spinner } from '../constants'
 
-export default (pathname: string) => {
-  const command = `npx rimraf ${pathname}`
-  spinner.start(`deleting ${pathname} ...`)
+export default (path: string[]) => {
+  const command = `npx rimraf ${path.join(' ')}`
+  spinner.start(`deleting ${path.join(' ')}} ...`)
   shell.exec(command, {
     fatal: true,
     silent: true,

@@ -27,7 +27,7 @@ async function startup() {
   if (argv._[0] === 'tree')
     tree(argv.ignore || [])
   if (argv._[0] === 'rm')
-    rm(argv.dir)
+    rm(argv._.slice(1))
   if (argv._[0] === 'image')
     await image(argv)
   if (argv._[0] === 'gitignore')

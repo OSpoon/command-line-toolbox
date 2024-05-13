@@ -16,7 +16,7 @@ export const usage = [
   'clt tree --ignore <pattern>        ignore unimportant directories',
   'clt antdv                          install antdv into the vue-vite-ts project',
   'clt vite                           run npm create vite@latest',
-  'clt rm --dir <pathname>            delete a folder or file',
+  'clt rm <path> [<path> ...]         deletes all files and folders at "path", recursively.',
   'clt image --file <pathname>        image `--quality` compression, default 80',
   'clt gitignore                      generate .gitignore file',
   'clt gitignore --template <name>    generate specific .gitignore file',
