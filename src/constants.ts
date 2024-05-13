@@ -18,9 +18,9 @@ export const usage = [
   'clt vite                               run npm create vite@latest',
   'clt rm <path> [<path> ...]             deletes all files and folders at "path", recursively.',
   'clt image --file <pathname>            image `--quality` compression, default 80',
-  'clt gitignore                          generate .gitignore file',
-  'clt gitignore --template <name>        generate specific .gitignore file',
-  'clt mkcert --domain [<domain> ...]     generate a local trusted development certificate',
+  'clt gitignore <template>               specifies the template generates .gitignore file',
+  'clt gitignore --list                   select the template to generate .gitignore file',
+  'clt mkcert <domain> [<domain> ...]     generate a local trusted development certificate',
   'clt mkcert --uninstall                 uninstall the local CA (but do not delete it)',
 ].join('\n')
 

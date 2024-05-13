@@ -11,9 +11,9 @@ function capitalizeFirstLetter(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
-export default async (argv: any) => {
-  let template = argv?.template
-  if (!template) {
+export default async (name: any, list: boolean) => {
+  let template = name
+  if (list || !name) {
     const { data } = await octokit.request('GET /gitignore/templates', {
       headers: {
         'X-GitHub-Api-Version': '2022-11-28',

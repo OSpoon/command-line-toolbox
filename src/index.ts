@@ -31,7 +31,7 @@ async function startup() {
   if (argv._[0] === 'image')
     await image(argv)
   if (argv._[0] === 'gitignore')
-    await gitignore(argv)
+    await gitignore(argv._[1], argv.list)
   if (argv._[0] === 'mkcert' && !argv.uninstall)
     await mkcert(argv._.slice(1))
   if (argv._[0] === 'mkcert' && argv.uninstall)
