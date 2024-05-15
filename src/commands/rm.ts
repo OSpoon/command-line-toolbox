@@ -3,7 +3,7 @@ import { spinner } from '../constants'
 
 export default (path: string[]) => {
   const command = `npx rimraf ${path.join(' ')}`
-  spinner.start(`deleting ${path.join(' ')}} ...`)
+  spinner.start(`deleting ${path.join(' ')} ...`)
   shell.exec(command, {
     fatal: true,
     silent: true,
