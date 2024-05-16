@@ -1,5 +1,6 @@
 import process from 'node:process'
 import minimist from 'minimist'
+import pc from 'picocolors'
 import { usage } from './constants'
 import create from './commands/create'
 import antdv from './commands/antdv'
@@ -12,7 +13,7 @@ import log from './console'
 
 async function startup() {
   const argv = minimist(process.argv.slice(2))
-  log.d('args: ', argv)
+  log.d(pc.bold('INPUT ARGS: '), argv)
   if (argv._.length === 0) {
     log.i(usage)
     process.exit(0)

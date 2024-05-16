@@ -2,6 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { cwd } from 'node:process'
 import { minimatch } from 'minimatch'
+import pc from 'picocolors'
 import log from '../console'
 
 function filterFiles(files: string[], patterns: string[]): string[] {
@@ -35,7 +36,7 @@ function tree(dir: string, prefix: string = '', patterns: string[]): void {
     const stats = fs.statSync(file)
     const isLast = index === sortedFiles.length - 1
 
-    log.i(prefix + (isLast ? '└─ ' : '├─ ') + fileName)
+    log.i(pc.cyan(prefix + (isLast ? '└─ ' : '├─ ') + fileName))
 
     if (stats.isDirectory()) {
       const newPrefix = prefix + (isLast ? '    ' : '│   ')
@@ -45,6 +46,6 @@ function tree(dir: string, prefix: string = '', patterns: string[]): void {
 }
 
 export default (patterns: string[]) => {
-  log.i(path.parse(cwd()).name.toLocaleUpperCase())
+  log.i(pc.bold(path.parse(cwd()).name.toLocaleUpperCase()))
   tree('.', '', ['.git', '.github', '.vscode', 'node_modules', 'dist'].concat(patterns))
 }

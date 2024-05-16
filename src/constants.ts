@@ -1,5 +1,6 @@
 import type { QuestionCollection } from 'inquirer'
 import ora from 'ora'
+import pc from 'picocolors'
 import pkg from '../package.json'
 
 export const spinner = ora({
@@ -7,19 +8,20 @@ export const spinner = ora({
 })
 
 export const usage = [
-  'clt <command>',
-  'Usage:',
+  `${pc.cyan('clt')} ${pc.yellow('<command>')}`,
   '',
-  'clt create                             create new project',
-  'clt create --force                     overlay existing projects',
-  'clt tree                               print current directory',
-  'clt tree --ignore <pattern>            ignore unimportant directories',
-  'clt antdv                              install antdv into the vue-vite-ts project',
-  'clt rm <path> [<path> ...]             deletes all files and folders at "path", recursively.',
-  'clt gitignore <template>               specifies the template generates .gitignore file',
-  'clt gitignore --list                   select the template to generate .gitignore file',
-  'clt mkcert <domain> [<domain> ...]     generate a local trusted development certificate',
-  'clt mkcert --uninstall                 uninstall the local CA (but do not delete it)',
+  `${pc.bold('Usage:')}`,
+  '',
+  `${pc.cyan('clt')} ${pc.yellow('create')}                             ${pc.bold('create new project')}`,
+  `${pc.cyan('clt')} ${pc.yellow('create --force')}                     ${pc.bold('overlay existing projects')}`,
+  `${pc.cyan('clt')} ${pc.yellow('tree')}                               ${pc.bold('print current directory')}`,
+  `${pc.cyan('clt')} ${pc.yellow('tree --ignore <pattern>')}            ${pc.bold('ignore unimportant directories')}`,
+  `${pc.cyan('clt')} ${pc.yellow('antdv')}                              ${pc.bold('install antdv into the vue-vite-ts project')}`,
+  `${pc.cyan('clt')} ${pc.yellow('rm <path> [<path> ...]')}             ${pc.bold('deletes all files and folders at "path", recursively')}`,
+  `${pc.cyan('clt')} ${pc.yellow('gitignore <template>')}               ${pc.bold('specifies the template generates .gitignore file')}`,
+  `${pc.cyan('clt')} ${pc.yellow('gitignore --list')}                   ${pc.bold('select the template to generate .gitignore file')}`,
+  `${pc.cyan('clt')} ${pc.yellow('mkcert <domain> [<domain> ...]')}     ${pc.bold('generate a local trusted development certificate')}`,
+  `${pc.cyan('clt')} ${pc.yellow('mkcert --uninstall')}                 ${pc.bold('uninstall the local CA (but do not delete it)')}`,
 ].join('\n')
 
 export const CREATE_QUESTIONS: Array<QuestionCollection> = [
