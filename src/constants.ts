@@ -22,6 +22,7 @@ export const usage = [
   `${pc.cyan('clt')} ${pc.yellow('gitignore --list')}                   ${pc.bold('select the template to generate .gitignore file')}`,
   `${pc.cyan('clt')} ${pc.yellow('mkcert <domain> [<domain> ...]')}     ${pc.bold('generate a local trusted development certificate')}`,
   `${pc.cyan('clt')} ${pc.yellow('mkcert --uninstall')}                 ${pc.bold('uninstall the local CA (but do not delete it)')}`,
+  `${pc.cyan('clt')} ${pc.yellow('kill <port>')}                        ${pc.bold('releases the process occupied by the port')}`,
 ].join('\n')
 
 export const CREATE_QUESTIONS: Array<QuestionCollection> = [
@@ -70,6 +71,22 @@ export function GITIGNORE_QUESTIONS(templates: string[]): Array<QuestionCollecti
         return {
           name: template,
           value: template,
+        }
+      }),
+    },
+  ]
+}
+
+export function IPDLIST_QUESTIONS(processes: { protocol: string, local: string, remote: string, pid: string }[]): Array<QuestionCollection> {
+  return [
+    {
+      type: 'list',
+      name: 'template',
+      message: '.gitignore template',
+      choices: processes.map((process) => {
+        return {
+          name: `${process.protocol} ${process.local}`,
+          value: process.pid,
         }
       }),
     },

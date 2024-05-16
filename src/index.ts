@@ -8,6 +8,7 @@ import tree from './commands/tree'
 import rm from './commands/rm'
 import gitignore from './commands/gitignore'
 import mkcert, { uninstall } from './commands/mkcert'
+import kill from './commands/kill'
 import 'dotenv/config'
 import log from './console'
 
@@ -32,6 +33,8 @@ async function startup() {
     await mkcert(argv._.slice(1))
   if (argv._[0] === 'mkcert' && argv.uninstall)
     await uninstall()
+  if (argv._[0] === 'kill')
+    await kill(argv._[1])
 }
 
 startup()
