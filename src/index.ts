@@ -1,5 +1,4 @@
 import process from 'node:process'
-import { log } from 'node:console'
 import minimist from 'minimist'
 import { usage } from './constants'
 import create from './commands/create'
@@ -8,12 +7,14 @@ import tree from './commands/tree'
 import rm from './commands/rm'
 import gitignore from './commands/gitignore'
 import mkcert, { uninstall } from './commands/mkcert'
+import 'dotenv/config'
+import log from './console'
 
 async function startup() {
   const argv = minimist(process.argv.slice(2))
-  log('args: ', argv)
+  log.d('args: ', argv)
   if (argv._.length === 0) {
-    log(usage)
+    log.i(usage)
     process.exit(0)
   }
   if (argv._[0] === 'create')

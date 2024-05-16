@@ -3,10 +3,10 @@ import { join } from 'node:path'
 import { createWriteStream, existsSync } from 'node:fs'
 import { chmod, mkdir, unlink } from 'node:fs/promises'
 import { homedir } from 'node:os'
-import { log } from 'node:console'
 import { Octokit } from '@octokit/core'
 import axios from 'axios'
 import shell from 'shelljs'
+import log from '../console'
 import { spinner } from '../constants'
 
 function fullFileName(tagName: string) {
@@ -86,7 +86,7 @@ function generate(cmd: string, domains: string[]) {
     fatal: true,
     silent: true,
   }, (_code: number, _stdout: string, stderr: string) => {
-    log(stderr)
+    log.e(stderr)
   })
 }
 
@@ -107,7 +107,7 @@ export async function uninstall() {
       fatal: true,
       silent: true,
     }, (_code: number, _stdout: string, stderr: string) => {
-      log(stderr)
+      log.e(stderr)
     })
   }
 }

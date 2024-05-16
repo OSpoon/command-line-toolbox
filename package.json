@@ -57,6 +57,7 @@
   "dependencies": {
     "@octokit/core": "^6.1.2",
     "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
     "inquirer": "^9.2.19",
     "minimatch": "^9.0.4",
     "minimist": "^1.2.8",
