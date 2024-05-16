@@ -66,7 +66,7 @@ export function GITIGNORE_QUESTIONS(templates: string[]): Array<QuestionCollecti
     {
       type: 'list',
       name: 'template',
-      message: '.gitignore template',
+      message: '.gitignore template:',
       choices: templates.map((template) => {
         return {
           name: template,
@@ -81,8 +81,8 @@ export function IPDLIST_QUESTIONS(processes: { protocol: string, local: string, 
   return [
     {
       type: 'list',
-      name: 'template',
-      message: '.gitignore template',
+      name: 'pid',
+      message: 'selected local link:',
       choices: processes.map((process) => {
         return {
           name: `${process.protocol} ${process.local}`,

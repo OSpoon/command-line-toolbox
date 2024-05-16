@@ -22,9 +22,22 @@ async function killWin(port: string) {
           pid: pid.replace('\r', ''),
         }
       })
-      const data = lines.filter(l => new RegExp(`^\\d.*:${port}`).test(l.local))
-      const pid = await inquirer.prompt(IPDLIST_QUESTIONS(data))
-      shell.exec(`taskkill /F /PID ${pid} >nul 2>&1`)
+      const data = lines.filter(l => new RegExp(`^(\\d.*|\\[[:1]*\\]):${port}$`).test(l.local))
+      const { pid } = await inquirer.prompt(IPDLIST_QUESTIONS(data))
+      shell.exec(`taskkill /F /PID ${pid}`, {
+        fatal: true,
+        silent: true,
+        encoding: 'base64',
+      }, (code, stdout, stderr) => {
+        if (code === 0) {
+          // kill successful
+          log.i(iconv.decode(iconv.encode(stdout, 'base64'), 'gb2312'))
+        }
+        else {
+          // kill failed
+          log.i('stderr \n', iconv.decode(iconv.encode(stderr, 'base64'), 'gb2312'))
+        }
+      })
     }
     else {
       log.d('stderr \n', iconv.decode(iconv.encode(stderr, 'base64'), 'gb2312'))
