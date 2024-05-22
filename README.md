@@ -26,7 +26,7 @@ npm install command-line-toolbox -g
 | `clt gitignore` | 生成`.gitignore`文件 |  |
 | `clt mkcert` | 生成本地可信任的开发证书 | `mkcert` |
 | `clt kill` | 释放端口对应的进程 |  |
-| `clt git-user` | 管理 Git 用户信息 |  |
+| `clt gituser` | 管理 Git 用户信息 |  |
 
 ## License
 

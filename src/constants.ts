@@ -23,9 +23,9 @@ export const usage = [
   `${pc.cyan('clt')} ${pc.yellow('mkcert <domain> [<domain> ...]')}     ${pc.bold('generate a local trusted development certificate')}`,
   `${pc.cyan('clt')} ${pc.yellow('mkcert --uninstall')}                 ${pc.bold('uninstall the local CA (but do not delete it)')}`,
   `${pc.cyan('clt')} ${pc.yellow('kill <port>')}                        ${pc.bold('releases the process occupied by the port')}`,
-  `${pc.cyan('clt')} ${pc.yellow('git-user')}                           ${pc.bold('toggle git user information')}`,
-  `${pc.cyan('clt')} ${pc.yellow('git-user add')}                       ${pc.bold('add git user information')}`,
-  `${pc.cyan('clt')} ${pc.yellow('git-user remove')}                    ${pc.bold('delete git user information')}`,
+  `${pc.cyan('clt')} ${pc.yellow('gituser')}                           ${pc.bold('toggle git user information')}`,
+  `${pc.cyan('clt')} ${pc.yellow('gituser add')}                       ${pc.bold('add git user information')}`,
+  `${pc.cyan('clt')} ${pc.yellow('gituser remove')}                    ${pc.bold('delete git user information')}`,
 ].join('\n')
 
 export const CREATE_QUESTIONS: Array<QuestionCollection> = [

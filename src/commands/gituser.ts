@@ -70,7 +70,7 @@ async function use() {
     })
   }
   else {
-    log.i(`💡 use ${pc.cyan('clt')} ${pc.yellow('git-user add')} to add users`)
+    log.i(`💡 use ${pc.cyan('clt')} ${pc.yellow('gituser add')} to add users`)
   }
 }
 
