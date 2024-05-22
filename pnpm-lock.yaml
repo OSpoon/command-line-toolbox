@@ -41,6 +41,9 @@ importers:
       ts-morph:
         specifier: ^22.0.0
         version: 22.0.0
+      yaml:
+        specifier: ^2.4.2
+        version: 2.4.2
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^2.14.0
