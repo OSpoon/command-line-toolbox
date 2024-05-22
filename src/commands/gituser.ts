@@ -75,7 +75,6 @@ async function use() {
 }
 
 export default async (command: string) => {
-  log.d(command)
   if (command === undefined)
     await use()
   if (command === 'add')
