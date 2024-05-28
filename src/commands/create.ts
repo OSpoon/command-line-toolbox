@@ -10,6 +10,8 @@ export default async (argv: any) => {
         `npx ejs ./_README.md name=${name} description=${description} -o ./README.md`,
         `npx ejs ./_package.json name=${name} description=${description} -o ./package.json`,
         `npx rimraf _README.md _package.json`,
+        `git init`,
+        `npx ni`,
   ]
   spinner.start('init project template ...')
   shell.exec(commands.join(' && '), {
