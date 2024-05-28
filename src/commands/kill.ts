@@ -5,6 +5,10 @@ import inquirer from 'inquirer'
 import { IPDLIST_QUESTIONS, spinner } from '../constants'
 import log from '../console'
 
+function decode(content: string) {
+  return iconv.decode(iconv.encode(content, 'base64'), 'gb2312')
+}
+
 async function killWin(port: string) {
   shell.exec(`netstat -nao | findstr LISTENING`, {
     fatal: true,
@@ -12,7 +16,7 @@ async function killWin(port: string) {
     encoding: 'base64',
   }, async (code, stdout, stderr) => {
     if (code === 0) {
-      const output = iconv.decode(iconv.encode(stdout, 'base64'), 'gb2312')
+      const output = decode(stdout)
       const lines = output.split('\n').filter(i => i).map((line) => {
         const [protocol, local, remote, _, pid] = line.split(' ').filter(i => i)
         return {
@@ -31,16 +35,16 @@ async function killWin(port: string) {
       }, (code, stdout, stderr) => {
         if (code === 0) {
           // kill successful
-          log.i(iconv.decode(iconv.encode(stdout, 'base64'), 'gb2312'))
+          log.i(decode(stdout))
         }
         else {
           // kill failed
-          log.i('stderr \n', iconv.decode(iconv.encode(stderr, 'base64'), 'gb2312'))
+          log.i('stderr \n', decode(stderr))
         }
       })
     }
     else {
-      log.d('stderr \n', iconv.decode(iconv.encode(stderr, 'base64'), 'gb2312'))
+      log.d('stderr \n', decode(stderr))
     }
   })
 }
