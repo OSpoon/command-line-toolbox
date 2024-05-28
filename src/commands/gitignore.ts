@@ -29,46 +29,58 @@ async function getGitIgnoreDetail(template: string) {
   return data.source
 }
 
-export default async (argv: any) => {
-  const TEMPLATES = await getGitIgnoreList()
-  const argTemplate = argv.template || argv.t
-  let result: prompts.Answers<'template'>
+async function builder(templates: string[], argTemplate: string) {
   try {
-    result = await prompts([
+    const result = await prompts([
       {
-        type: argTemplate && TEMPLATES.includes(argTemplate) ? null : 'select',
+        type: argTemplate && templates.includes(argTemplate) ? null : 'select',
         name: 'template',
-        message: pc.reset('select a template:'),
+        message:
+          typeof argTemplate === 'string' && !templates.includes(argTemplate)
+            ? pc.reset(
+                `"${argTemplate}" isn't a valid template. Please choose from below: `,
+            )
+            : pc.reset('select a template:'),
         initial: 0,
-        choices: TEMPLATES.map((template) => {
+        choices: templates.map((template) => {
           return {
             title: template,
             value: template,
           }
         }),
       },
-    ])
+    ], {
+      onCancel: () => {
+        throw new Error(`${pc.red('✖')} Operation cancelled`)
+      },
+    })
+    return result
   }
   catch (cancelled: any) {
     log.i(cancelled.message)
-    return
   }
-  const template = result?.template || argTemplate
-  const source = template && await getGitIgnoreDetail(template)
-  if (!source)
-    log.i(pc.red(`${template} is not exist`))
+}
 
+export default async (argv: any) => {
+  const TEMPLATES = await getGitIgnoreList()
+  const argTemplate = argv.template || argv.t
+  const result = await builder(TEMPLATES, argTemplate)
+  // get template from argv or prompt
+  const template = result?.template || (TEMPLATES.includes(argTemplate) ? argTemplate : undefined)
+  if (!template)
+    return
+  const source = template && await getGitIgnoreDetail(template)
   try {
     spinner.start(`generate ${template}'s .gitignore file ...`)
     await writeFileSync(join(cwd(), '.gitignore'), source, {
       encoding: 'utf-8',
       flag: 'w',
     })
-    // generate successful
+    // generate success
     spinner.succeed('generate successful')
   }
   catch (error: any) {
-    // generate failure
+    // generate fail
     spinner.fail(error.message)
   }
 }
