@@ -1,7 +1,7 @@
 {
   "name": "command-line-toolbox",
   "type": "module",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "packageManager": "pnpm@9.0.2",
   "description": "命令行工具箱",
   "author": "OSpoon <zxin088@gmail.com>",
@@ -12,7 +12,15 @@
     "url": "git+https://github.com/ospoon/command-line-toolbox.git"
   },
   "bugs": "https://github.com/ospoon/command-line-toolbox/issues",
-  "keywords": ["create", "rm -rf", "kill", "tree", "git", "ignore", "mkcert"],
+  "keywords": [
+    "create",
+    "rm -rf",
+    "kill",
+    "tree",
+    "git",
+    "ignore",
+    "mkcert"
+  ],
   "sideEffects": false,
   "exports": {
     ".": {
