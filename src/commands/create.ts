@@ -8,14 +8,10 @@ import log from '../console'
 const TEMPLATES = ['ospoon/starter-ts']
 const DEFAULT_TARGET_DIR = 'typescript-library-project'
 
-export default async (argv: any) => {
-  const argTargetDir = formatTargetDir(argv._[1])
-  const argTemplate = argv.template || argv.t
-
-  let targetDir = argTargetDir || DEFAULT_TARGET_DIR
-  let result: prompts.Answers<'packageName' | 'description' | 'template'>
+async function builder(argTargetDir: string | undefined, argDescription: string, argTemplate: string) {
   try {
-    result = await prompts([
+    let targetDir = argTargetDir || DEFAULT_TARGET_DIR
+    const result = await prompts([
       {
         type: argTargetDir ? null : 'text',
         name: 'projectName',
@@ -34,7 +30,7 @@ export default async (argv: any) => {
           isValidPackageName(dir) || 'Invalid package.json name',
       },
       {
-        type: 'text',
+        type: argDescription ? null : 'text',
         name: 'description',
         message: pc.reset('input description:'),
         initial: () => 'Awesome typescript library project',
@@ -59,21 +55,35 @@ export default async (argv: any) => {
           }
         }),
       },
-    ])
+    ], {
+      onCancel: () => {
+        throw new Error(`${pc.red('✖')} Operation cancelled`)
+      },
+    })
+    return result
   }
   catch (cancelled: any) {
     log.i(cancelled.message)
-    return
   }
-  const { template, packageName, description } = result
+}
+
+export default async (argv: any) => {
+  const argTargetDir = formatTargetDir(argv._[1])
+  const argDescription = argv.description || argv.d
+  const argTemplate = argv.template || argv.t
+  const result = await builder(argTargetDir, argDescription, argTemplate)
+  if (!result)
+    return
+  const { projectName, packageName, description, template } = result
   const force = argv.force || false
-  const name = packageName || targetDir
+  const name = packageName || projectName || formatTargetDir(argTargetDir)
   const repo = template || argTemplate
+  const desc = description || argDescription
   const commands = [
         `npx degit ${repo} ${name} --force ${force} --color=always`,
         `cd ${name}`,
-        `npx ejs ./_README.md name=${name} description=${description} -o ./README.md`,
-        `npx ejs ./_package.json name=${name} description=${description} -o ./package.json`,
+        `npx ejs ./_README.md name=${name} description=${desc} -o ./README.md`,
+        `npx ejs ./_package.json name=${name} description=${desc} -o ./package.json`,
         `npx rimraf _README.md _package.json`,
         `git init`,
         `npx ni --color=always`,

@@ -34,7 +34,7 @@ npm install command-line-toolbox -g
 clt create
 
 # all options
-clt create <project-name> --template=ospoon/starter-ts --force
+clt create <project-name> --template=ospoon/starter-ts --description=<description> --force
 ```
 
 PS: 目前仅内置 `ospoon/starter-ts` 模板.
