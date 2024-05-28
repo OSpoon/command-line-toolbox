@@ -12,7 +12,7 @@
     "url": "git+https://github.com/ospoon/command-line-toolbox.git"
   },
   "bugs": "https://github.com/ospoon/command-line-toolbox/issues",
-  "keywords": [],
+  "keywords": ["create", "rm -rf", "kill", "tree", "git", "ignore", "mkcert"],
   "sideEffects": false,
   "exports": {
     ".": {
