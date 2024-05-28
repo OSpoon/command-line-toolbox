@@ -14,7 +14,7 @@ import 'dotenv/config'
 import log from './console'
 
 async function startup() {
-  const argv = minimist(process.argv.slice(2))
+  const argv = minimist(process.argv.slice(2), { string: ['_'] })
   log.d(pc.bold('INPUT ARGS: '), argv)
   if (argv._.length === 0) {
     log.i(usage)

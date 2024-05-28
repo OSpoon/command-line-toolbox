@@ -35,6 +35,9 @@ importers:
       picocolors:
         specifier: ^1.0.0
         version: 1.0.1
+      prompts:
+        specifier: ^2.4.2
+        version: 2.4.2
       shelljs:
         specifier: ^0.8.5
         version: 0.8.5
@@ -66,6 +69,9 @@ importers:
       '@types/node':
         specifier: ^20.12.7
         version: 20.12.12
+      '@types/prompts':
+        specifier: ^2.4.9
+        version: 2.4.9
       '@types/shelljs':
         specifier: ^0.8.15
         version: 0.8.15
@@ -871,6 +877,9 @@ packages:
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
+
+  '@types/prompts@2.4.9':
+    resolution: {integrity: sha512-qTxFi6Buiu8+50/+3DGIWLHM6QuWsEKugJnnP6iv2Mc4ncxE4A/OJkjuVOA+5X0X1S/nq5VJRa8Lu+nwcvbrKA==}
 
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
@@ -3892,6 +3901,11 @@ snapshots:
       undici-types: 5.26.5
 
   '@types/normalize-package-data@2.4.4': {}
+
+  '@types/prompts@2.4.9':
+    dependencies:
+      '@types/node': 20.12.12
+      kleur: 3.0.3
 
   '@types/resolve@1.20.2': {}
 
