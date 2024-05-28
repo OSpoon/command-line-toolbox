@@ -28,7 +28,7 @@ async function startup() {
   if (argv._[0] === 'rm')
     rm(argv._.slice(1))
   if (argv._[0] === 'gitignore')
-    await gitignore(argv._[1], argv.list)
+    await gitignore(argv)
   if (argv._[0] === 'mkcert' && !argv.uninstall)
     await mkcert(argv._.slice(1))
   if (argv._[0] === 'mkcert' && argv.uninstall)

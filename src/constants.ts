@@ -17,27 +17,10 @@ export const usage = [
   `${pc.cyan('clt')} ${pc.yellow('tree')}                               ${pc.bold('print current directory')}`,
   `${pc.cyan('clt')} ${pc.yellow('tree --ignore <pattern>')}            ${pc.bold('ignore unimportant directories')}`,
   `${pc.cyan('clt')} ${pc.yellow('antdv')}                              ${pc.bold('install antdv into the vue-vite-ts project')}`,
-  `${pc.cyan('clt')} ${pc.yellow('gitignore <template>')}               ${pc.bold('specifies the template generates .gitignore file')}`,
-  `${pc.cyan('clt')} ${pc.yellow('gitignore --list')}                   ${pc.bold('select the template to generate .gitignore file')}`,
+  `${pc.cyan('clt')} ${pc.yellow('gitignore --template <name>')}        ${pc.bold('specifies the template generates .gitignore file')}`,
   `${pc.cyan('clt')} ${pc.yellow('mkcert <domain> [<domain> ...]')}     ${pc.bold('generate a local trusted development certificate')}`,
   `${pc.cyan('clt')} ${pc.yellow('mkcert --uninstall')}                 ${pc.bold('uninstall the local CA (but do not delete it)')}`,
 ].join('\n')
-
-export function GITIGNORE_QUESTIONS(templates: string[]): Array<QuestionCollection> {
-  return [
-    {
-      type: 'list',
-      name: 'template',
-      message: '.gitignore template:',
-      choices: templates.map((template) => {
-        return {
-          name: template,
-          value: template,
-        }
-      }),
-    },
-  ]
-}
 
 export function IPDLIST_QUESTIONS(processes: { protocol: string, local: string, remote: string, pid: string }[]): Array<QuestionCollection> {
   return [

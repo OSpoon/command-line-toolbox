@@ -3,6 +3,7 @@ import prompts from 'prompts'
 import pc from 'picocolors'
 import { spinner } from '../constants'
 import { formatTargetDir, isValidPackageName, toValidPackageName } from '../utils'
+import log from '../console'
 
 const TEMPLATES = ['ospoon/starter-ts']
 const DEFAULT_TARGET_DIR = 'typescript-library-project'
@@ -12,53 +13,59 @@ export default async (argv: any) => {
   const argTemplate = argv.template || argv.t
 
   let targetDir = argTargetDir || DEFAULT_TARGET_DIR
-
-  const { template, packageName, description } = await prompts([
-    {
-      type: argTargetDir ? null : 'text',
-      name: 'projectName',
-      message: pc.reset('input project name:'),
-      initial: DEFAULT_TARGET_DIR,
-      onState: (state) => {
-        targetDir = formatTargetDir(state.value) || DEFAULT_TARGET_DIR
+  let result: prompts.Answers<'packageName' | 'description' | 'template'>
+  try {
+    result = await prompts([
+      {
+        type: argTargetDir ? null : 'text',
+        name: 'projectName',
+        message: pc.reset('input project name:'),
+        initial: DEFAULT_TARGET_DIR,
+        onState: (state) => {
+          targetDir = formatTargetDir(state.value) || DEFAULT_TARGET_DIR
+        },
       },
-    },
-    {
-      type: () => (isValidPackageName(targetDir) ? null : 'text'),
-      name: 'packageName',
-      message: pc.reset('input package name:'),
-      initial: () => toValidPackageName(targetDir),
-      validate: dir =>
-        isValidPackageName(dir) || 'Invalid package.json name',
-    },
-    {
-      type: 'text',
-      name: 'description',
-      message: pc.reset('input description:'),
-      initial: () => 'Awesome typescript library project',
-      validate: content =>
-        !content ? 'Description is required' : true,
-    },
-    {
-      type:
-        argTemplate && TEMPLATES.includes(argTemplate) ? null : 'select',
-      name: 'template',
-      message:
-        typeof argTemplate === 'string' && !TEMPLATES.includes(argTemplate)
-          ? pc.reset(
-              `"${argTemplate}" isn't a valid template. Please choose from below: `,
-          )
-          : pc.reset('select a template:'),
-      initial: 0,
-      choices: TEMPLATES.map((template) => {
-        return {
-          title: template,
-          value: template,
-        }
-      }),
-    },
-  ])
-
+      {
+        type: () => (isValidPackageName(targetDir) ? null : 'text'),
+        name: 'packageName',
+        message: pc.reset('input package name:'),
+        initial: () => toValidPackageName(targetDir),
+        validate: dir =>
+          isValidPackageName(dir) || 'Invalid package.json name',
+      },
+      {
+        type: 'text',
+        name: 'description',
+        message: pc.reset('input description:'),
+        initial: () => 'Awesome typescript library project',
+        validate: content =>
+          !content ? 'Description is required' : true,
+      },
+      {
+        type:
+          argTemplate && TEMPLATES.includes(argTemplate) ? null : 'select',
+        name: 'template',
+        message:
+          typeof argTemplate === 'string' && !TEMPLATES.includes(argTemplate)
+            ? pc.reset(
+                `"${argTemplate}" isn't a valid template. Please choose from below: `,
+            )
+            : pc.reset('select a template:'),
+        initial: 0,
+        choices: TEMPLATES.map((template) => {
+          return {
+            title: template,
+            value: template,
+          }
+        }),
+      },
+    ])
+  }
+  catch (cancelled: any) {
+    log.i(cancelled.message)
+    return
+  }
+  const { template, packageName, description } = result
   const force = argv.force || false
   const name = packageName || targetDir
   const repo = template || argTemplate
