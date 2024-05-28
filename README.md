@@ -28,8 +28,6 @@ npm install command-line-toolbox -g
 | `clt kill` | 释放端口对应的进程 |  |
 | `clt gituser` | 管理 Git 用户信息 |  |
 
-## Commands
-
 ### 创建新项目
 
 ```bash
@@ -37,10 +35,24 @@ npm install command-line-toolbox -g
 clt create
 
 # all options
-clt create <ProjectName> --template=ospoon/starter-ts --force
+clt create <project-name> --template=ospoon/starter-ts --force
 ```
 
 PS: 目前仅内置 `ospoon/starter-ts` 模板.
+
+### 删除文件夹
+
+```bash
+# all options
+clt rm <path> [<path> ...]
+```
+
+### 释放端口
+
+```bash
+# all options
+clt kill <port>
+```
 
 ## License
 
