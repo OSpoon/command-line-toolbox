@@ -20,13 +20,12 @@ npm install command-line-toolbox -g
 | command | description | dependencies |
 |-------|-------|-------|
 | `clt create` | 创建新项目 | `ospoon/starter-ts` |
+| `clt rm` | 递归地删除“path”下的所有文件和文件夹 | `rimraf` |
+| `clt kill` | 释放端口对应的进程 |  |
 | `clt tree` | 打印目录树 |  |
 | `clt antdv` | 安装 `ant-design-vue@4.x` 到 `vue-vite-ts` 项目 | `ant-design-vue` |
-| `clt rm` | 递归地删除“path”下的所有文件和文件夹 | `rimraf` |
 | `clt gitignore` | 生成`.gitignore`文件 |  |
 | `clt mkcert` | 生成本地可信任的开发证书 | `mkcert` |
-| `clt kill` | 释放端口对应的进程 |  |
-| `clt gituser` | 管理 Git 用户信息 |  |
 
 ### 创建新项目
 

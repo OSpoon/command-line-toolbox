@@ -9,7 +9,6 @@ import rm from './commands/rm'
 import gitignore from './commands/gitignore'
 import mkcert, { uninstall } from './commands/mkcert'
 import kill from './commands/kill'
-import gituser from './commands/gituser'
 import 'dotenv/config'
 import log from './console'
 
@@ -36,8 +35,6 @@ async function startup() {
     await uninstall()
   if (argv._[0] === 'kill')
     await kill(argv._[1])
-  if (argv._[0] === 'gituser')
-    await gituser(argv._[1])
 }
 
 startup()
