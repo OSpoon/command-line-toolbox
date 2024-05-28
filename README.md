@@ -22,9 +22,9 @@ npm install command-line-toolbox -g
 | `clt create` | 创建新项目 | `ospoon/starter-ts` |
 | `clt rm` | 递归地删除“path”下的所有文件和文件夹 | `rimraf` |
 | `clt kill` | 释放端口对应的进程 |  |
+| `clt gitignore` | 生成`.gitignore`文件 |  |
 | `clt tree` | 打印目录树 |  |
 | `clt antdv` | 安装 `ant-design-vue@4.x` 到 `vue-vite-ts` 项目 | `ant-design-vue` |
-| `clt gitignore` | 生成`.gitignore`文件 |  |
 | `clt mkcert` | 生成本地可信任的开发证书 | `mkcert` |
 
 ### 创建新项目
@@ -52,6 +52,18 @@ clt rm <path> [<path> ...]
 # all options
 clt kill <port>
 ```
+
+### 生成 `.gitignore` 文件
+
+```bash
+# default
+clt gitignore
+
+# all options
+clt gitignore --template=<name>
+```
+
+PS: 模版名称首字母需大写.
 
 ## License
 
