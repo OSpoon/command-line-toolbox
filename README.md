@@ -63,7 +63,7 @@ clt gitignore
 clt gitignore --template=<name>
 ```
 
-PS: 模版名称首字母需大写.
+PS: 模版名称首字母需大写, 模板数据来源[gitignore](https://github.com/github/gitignore).
 
 ## License
 
