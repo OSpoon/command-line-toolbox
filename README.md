@@ -24,8 +24,8 @@ npm install command-line-toolbox -g
 | `clt kill` | 释放端口对应的进程 |  |
 | `clt gitignore` | 生成`.gitignore`文件 |  |
 | `clt tree` | 打印目录树 |  |
-| `clt antdv` | 安装 `ant-design-vue@4.x` 到 `vue-vite-ts` 项目 | `ant-design-vue` |
 | `clt mkcert` | 生成本地可信任的开发证书 | `mkcert` |
+| `clt antdv` | 安装 `ant-design-vue@4.x` 到 `vue-vite-ts` 项目 | `ant-design-vue` |
 
 ### 创建新项目
 
