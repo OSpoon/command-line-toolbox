@@ -17,12 +17,6 @@ npm install command-line-toolbox -g
 
 ## Features
 
-| command | description | dependencies |
-|-------|-------|-------|
-| `clt tree` | 打印目录树 |  |
-| `clt mkcert` | 生成本地可信任的开发证书 | `mkcert` |
-| `clt antdv` | 安装 `ant-design-vue@4.x` 到 `vue-vite-ts` 项目 | `ant-design-vue` |
-
 ### 创建新项目
 
 ```bash
@@ -61,6 +55,18 @@ clt gitignore --template=<name>
 
 PS: 模版名称首字母需大写, 模板数据来源[gitignore](https://github.com/github/gitignore).
 
+### 打印目录树
+
+```bash
+# default
+clt tree
+
+# all options
+clt tree --ignore=<pattern>
+```
+
+PS: 默认忽略 `.git`, `.github`, `.vscode`, `node_modules`, `dist` 目录.
+
 ### 打开 Git 远程仓库
 
 ```bash
@@ -72,6 +78,22 @@ clt remote <name>
 ```
 
 PS: 打开当前 Git 项目的远程仓库, 默认远端 `origin`.
+
+### 生成本地可信任的开发证书
+
+```bash
+# create
+mkcert <domain> [<domain> ...]
+
+# uninstall
+mkcert --uninstall
+```
+
+### 保留功能
+
+| command | description | dependencies |
+|-------|-------|-------|
+| `clt antdv` | 安装 `ant-design-vue@4.x` 到 `vue-vite-ts` 项目 | `ant-design-vue` |
 
 ## License
 
