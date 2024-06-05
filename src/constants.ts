@@ -20,6 +20,7 @@ export const usage = [
   `${pc.cyan('clt')} ${pc.yellow('mkcert <domain> [<domain> ...]')}     ${pc.bold('generate a local trusted development certificate')}`,
   `${pc.cyan('clt')} ${pc.yellow('mkcert --uninstall')}                 ${pc.bold('uninstall the local CA (but do not delete it)')}`,
   `${pc.cyan('clt')} ${pc.yellow('antdv')}                              ${pc.bold('install antdv into the vue-vite-ts project')}`,
+  `${pc.cyan('clt')} ${pc.yellow('remote <name>')}                      ${pc.bold('open the git remote repository, default name is origin')}`,
 ].join('\n')
 
 export function IPDLIST_QUESTIONS(processes: { protocol: string, local: string, remote: string, pid: string }[]): Array<QuestionCollection> {

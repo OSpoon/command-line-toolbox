@@ -9,6 +9,7 @@ import rm from './commands/rm'
 import gitignore from './commands/gitignore'
 import mkcert, { uninstall } from './commands/mkcert'
 import kill from './commands/kill'
+import remote from './commands/remote'
 import 'dotenv/config'
 import log from './console'
 
@@ -19,22 +20,36 @@ async function startup() {
     log.i(usage)
     process.exit(0)
   }
-  if (argv._[0] === 'create')
-    await create(argv)
-  if (argv._[0] === 'antdv')
-    await antdv()
-  if (argv._[0] === 'tree')
-    tree(argv.ignore || [])
-  if (argv._[0] === 'rm')
-    rm(argv._.slice(1))
-  if (argv._[0] === 'gitignore')
-    await gitignore(argv)
-  if (argv._[0] === 'mkcert' && !argv.uninstall)
-    await mkcert(argv._.slice(1))
-  if (argv._[0] === 'mkcert' && argv.uninstall)
-    await uninstall()
-  if (argv._[0] === 'kill')
-    await kill(argv._[1])
+
+  const command = argv._[0]
+  const args = argv._.slice(1)
+
+  const commandMap = {
+    create: async () => await create(argv),
+    antdv: async () => await antdv(),
+    tree: () => tree(argv.ignore || []),
+    rm: () => rm(args),
+    gitignore: async () => await gitignore(argv),
+    mkcert: async () => await mkcert(args),
+    uninstall: async () => await uninstall(),
+    kill: async () => await kill(argv._[1]),
+    remote: async () => await remote(argv),
+  }
+
+  if (command in commandMap) {
+    if (command === 'mkcert' && argv.uninstall)
+      await commandMap.uninstall()
+    else
+      await Reflect.get(commandMap, command)()
+  }
+  else {
+    log.i(`未知的命令: ${command}`)
+    process.exit(1)
+  }
 }
 
-startup()
+// 执行启动函数
+startup().catch((error) => {
+  log.e('Error during startup:', error)
+  process.exit(1)
+})
